@@ -5,7 +5,8 @@ body {
     padding: 0;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    /* Pôvodná svetlosivá farba pozadia pre celé telo */
+    background-color: #f4f4f4; /* Alebo akúkoľvek inú peknú jemnú farbu (napr. #e0e0e0) */
 }
 
 .container {
@@ -22,23 +23,22 @@ header {
     padding-top: 20px;
     min-height: 70px;
     border-bottom: #0779e4 3px solid;
-    display: flex; /* Použijeme flexbox pre lepšie zarovnanie loga a navigácie */
-    align-items: center; /* Vertikálne zarovnanie obsahu hlavičky */
-    justify-content: space-between; /* Rozloží obsah medzi logo a nav */
-    padding: 10px 0; /* Upravíme padding pre lepšie zarovnanie loga */
-}
-
-header .container { /* Upravíme kontajner v hlavičke, aby fungoval s flexboxom */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%; /* Zabezpečíme šírku kontajnera */
+    padding: 10px 0;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
     margin: auto;
-    padding: 0; /* Odstránime padding, lebo je už na header */
+    padding: 0;
 }
 
 header h1 {
-    /* float: left; - Toto už nie je potrebné pri flexboxe */
     margin: 0;
     padding: 0;
     display: none; /* Skryjeme text h1, keďže máme logo obrázok */
@@ -46,33 +46,31 @@ header h1 {
 
 /* Štýly pre logo */
 .logo-link {
-    display: flex; /* Nastavíme logo-link ako flex kontajner pre centrovanie */
+    display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-    margin-right: 20px; /* Pridáme malú medzeru medzi logo a nav, ak je potrebná */
+    margin-right: 20px;
 }
 
 .logo {
-    max-width: 150px; /* Nastav maximálnu šírku loga, napr. 150px */
-    height: auto;    /* Výška sa prispôsobí automaticky */
-    display: block;  /* Zabezpečí správne zobrazenie */
+    max-width: 150px;
+    height: auto;
+    display: block;
 }
 
 header nav {
-    /* float: right; - Toto už nie je potrebné pri flexboxe */
-    margin-top: 0; /* Resetujeme margin-top */
+    margin-top: 0;
 }
 
 header ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex; /* Použijeme flexbox pre horizontálne menu */
+    display: flex;
 }
 
 header li {
-    /* display: inline; - Toto už nie je potrebné pri flexboxe */
     padding: 0 15px;
 }
 
@@ -91,8 +89,9 @@ header a:hover {
 /* Hero sekcia */
 .hero {
     min-height: 400px;
+   /* Vrátenie obrázka s chlapcom na skateboarde ako pozadia */
     background: url('images/2v244s.jpg') no-repeat center center/cover;
-    color: #fff; /* Farba textu na pozadí */
+    color: #fff; /* Farba textu zostáva biela, aby bola viditeľná na tmavšom obrázku */
     text-align: center;
     display: flex;
     align-items: center;
@@ -128,13 +127,15 @@ header a:hover {
 /* Info sekcie */
 .info-section {
     padding: 40px 0;
-    background: #fff;
+    /* Plné biele pozadie pre bežné info-sekcie */
+    background-color: #fff;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
 .info-section.light-bg {
-    background: #f9f9f9;
+    /* Jemné svetlosivé pozadie pre striedajúce sa sekcie */
+    background-color: #f9f9f9; /* Alebo #f0f0f0, veľmi svetlosivá */
 }
 
 .info-section h3 {
@@ -163,20 +164,26 @@ header a:hover {
     position: absolute;
     left: 0;
 }
-
 /* Kontaktná sekcia */
 .contact-section {
     padding: 40px 0;
     text-align: center;
+    /* NOVÉ: Pozadie s obrázkom 13htt2.jpg pre kontaktnú sekciu */
+    background: url('images/13htt2.jpg') repeat center center; /* Opakovať obrázok */
+    background-size: 1550px auto; /* Prispôsobiť veľkosť, aby boli oblaky viditeľné */
+    color: #333; /* Text na čierno (alebo #666), aby bol čitateľný na svetlom pozadí */
+
 }
 
+/* Form v kontaktnej sekcii */
 .contact-section form {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background: #fff;
+    background: #fff; /* Plné biele pozadie formulára */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: #333; /* Text vo formulári necháme tmavý */
 }
 
 .contact-section form input,
@@ -217,21 +224,21 @@ footer {
 /* Responzívny dizajn */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Na malých obrazovkách položky hlavičky pod sebou */
+        flex-direction: column;
         padding-top: 10px;
     }
     header .container {
         flex-direction: column;
     }
     header h1 {
-        display: none; /* Zabezpečí skrytie h1 aj na mobiloch */
+        display: none;
     }
     .logo-link {
-        margin-right: 0; /* Odstránime margin na mobiloch */
-        margin-bottom: 10px; /* Pridáme medzeru pod logo */
+        margin-right: 0;
+        margin-bottom: 10px;
     }
     header nav ul {
-        flex-direction: column; /* Položky menu pod sebou */
+        flex-direction: column;
     }
     header li {
         padding: 8px 0;
