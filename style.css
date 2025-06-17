@@ -5,12 +5,12 @@ body {
     padding: 0;
     line-height: 1.6;
     color: #333;
-    /* Pôvodná svetlosivá farba pozadia pre celé telo */
-    background-color: #f4f4f4; /* Alebo akúkoľvek inú peknú jemnú farbu (napr. #e0e0e0) */
+    background-color: #f4f4f4;
 }
 
 .container {
-    width: 80%;
+    width: 80%; /* Percentuálna šírka kontajnera */
+    max-width: 1200px; /* Maximálna šírka pre veľké obrazovky */
     margin: auto;
     overflow: hidden;
     padding: 20px 0;
@@ -23,19 +23,19 @@ header {
     padding-top: 20px;
     min-height: 70px;
     border-bottom: #0779e4 3px solid;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 0;
+    display: flex; /* Použijeme flexbox pre lepšie zarovnanie loga a navigácie */
+    align-items: center; /* Vertikálne zarovnanie obsahu hlavičky */
+    justify-content: space-between; /* Rozloží obsah medzi logo a nav */
+    padding: 10px 0; /* Upravíme padding pre lepšie zarovnanie loga */
 }
 
-header .container {
+header .container { /* Upravíme kontajner v hlavičke, aby fungoval s flexboxom */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 80%;
+    width: 90%; /* Kontajner v hlavičke bude širší na mobiloch */
     margin: auto;
-    padding: 0;
+    padding: 0; /* Odstránime padding, lebo je už na header */
 }
 
 header h1 {
@@ -50,11 +50,11 @@ header h1 {
     align-items: center;
     justify-content: center;
     height: 100%;
-    margin-right: 20px;
+    margin-right: 20px; /* Vzdialenosť od navigácie */
 }
 
 .logo {
-    max-width: 150px;
+    max-width: 150px; /* Max šírka loga */
     height: auto;
     display: block;
 }
@@ -67,7 +67,7 @@ header ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    display: flex;
+    display: flex; /* Položky navigácie vedľa seba */
 }
 
 header li {
@@ -89,14 +89,15 @@ header a:hover {
 /* Hero sekcia */
 .hero {
     min-height: 400px;
-   /* Vrátenie obrázka s chlapcom na skateboarde ako pozadia */
+    /* Ponechaný obrázok s chlapcom na skateboarde, ktorý si chcel */
     background: url('images/2v244s.jpg') no-repeat center center/cover;
-    color: #fff; /* Farba textu zostáva biela, aby bola viditeľná na tmavšom obrázku */
+    color: #fff;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 20px; /* Pridaný padding pre mobily */
 }
 
 .hero h2 {
@@ -113,7 +114,7 @@ header a:hover {
 .btn {
     display: inline-block;
     color: #fff;
-    background: #5cb85c; /* Zelené tlačidlo */
+    background: #5cb85c;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
@@ -127,15 +128,13 @@ header a:hover {
 /* Info sekcie */
 .info-section {
     padding: 40px 0;
-    /* Plné biele pozadie pre bežné info-sekcie */
     background-color: #fff;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
 .info-section.light-bg {
-    /* Jemné svetlosivé pozadie pre striedajúce sa sekcie */
-    background-color: #f9f9f9; /* Alebo #f0f0f0, veľmi svetlosivá */
+    background-color: #f9f9f9;
 }
 
 .info-section h3 {
@@ -164,13 +163,14 @@ header a:hover {
     position: absolute;
     left: 0;
 }
+
 /* Kontaktná sekcia */
 .contact-section {
     padding: 40px 0;
     text-align: center;
-    /* NOVÉ: Pozadie s obrázkom 13htt2.jpg pre kontaktnú sekciu */
-    background: url('images/13htt2.jpg') repeat center center; /* Opakovať obrázok */
-    background-size: 1550px auto; /* Prispôsobiť veľkosť, aby boli oblaky viditeľné */
+    /* Pozadie pre kontaktnú sekciu s obrázkom 13htt2.jpg */
+    background: url('images/13htt2.jpg') repeat center center;
+    background-size: 1550px auto; /* Uprav veľkosť podľa potreby */
     color: #333; /* Text na čierno (alebo #666), aby bol čitateľný na svetlom pozadí */
 
 }
@@ -180,15 +180,16 @@ header a:hover {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background: #fff; /* Plné biele pozadie formulára */
+    /* Priehľadné pozadie formulára, aby presvital obrázok kontaktnej sekcie */
+    background: rgba(255, 255, 255, 0.7); /* Biely podklad so 70% nepriehľadnosťou */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    color: #333; /* Text vo formulári necháme tmavý */
+    color: #333;
 }
 
 .contact-section form input,
 .contact-section form textarea {
-    width: calc(100% - 20px);
+    width: calc(100% - 20px); /* Pre mobil správne vypočíta šírku s paddingom */
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
@@ -221,35 +222,86 @@ footer {
     margin-top: 30px;
 }
 
-/* Responzívny dizajn */
+/* Responzívny dizajn - Úpravy pre menšie obrazovky (max šírka 768px) */
 @media (max-width: 768px) {
+    .container {
+        width: 95%; /* Väčšia šírka kontajnera na menších obrazovkách */
+        padding: 15px 0;
+    }
+
+    /* Hlavička */
     header {
-        flex-direction: column;
-        padding-top: 10px;
+        flex-direction: column; /* Položky hlavičky pod sebou */
+        padding: 10px 0;
     }
     header .container {
         flex-direction: column;
-    }
-    header h1 {
-        display: none;
+        width: 95%; /* Zabezpečí širší kontajner aj v hlavičke */
     }
     .logo-link {
-        margin-right: 0;
-        margin-bottom: 10px;
+        margin-right: 0; /* Odstránime pravý margin */
+        margin-bottom: 10px; /* Pridáme spodný margin */
     }
     header nav ul {
-        flex-direction: column;
+        flex-direction: column; /* Položky navigácie pod sebou */
+        width: 100%; /* Navigácia cez celú šírku */
+        text-align: center; /* Vycentrovať text */
     }
     header li {
-        padding: 8px 0;
+        padding: 8px 0; /* Viac miesta medzi položkami */
     }
+
+    /* Hero sekcia */
     .hero h2 {
-        font-size: 2.2em;
+        font-size: 2.2em; /* Zmenšíme veľkosť nadpisu */
     }
     .hero p {
-        font-size: 1em;
+        font-size: 1em; /* Zmenšíme veľkosť textu */
     }
-    .container {
-        width: 90%;
+
+    /* Všeobecné sekcie */
+    .info-section, .contact-section {
+        padding: 20px 0; /* Zmenšíme padding sekcií */
+    }
+
+    .info-section h3 {
+        font-size: 1.8em; /* Zmenšíme nadpisy sekcií */
+    }
+    .info-section ul {
+        margin: 15px auto;
+        padding-left: 15px; /* Upravíme padding */
+    }
+
+    /* Kontaktný formulár */
+    .contact-section form {
+        width: 90%; /* Zabezpečíme šírku formulára na mobiloch */
+        padding: 15px;
+    }
+    .contact-section form input,
+    .contact-section form textarea {
+        width: calc(100% - 20px); /* Zabezpečí, že inputy sú 100% široké mínus padding */
+    }
+
+    /* Ak máš iné obrázky, ktoré treba prispôsobiť, treba ich upraviť tu */
+    /* Napríklad, ak pic01.webp v sekcii Výkup je príliš veľký */
+    .quality-seal { /* Ak máš túto triedu pre pic01.webp */
+        max-width: 100%; /* Zabezpečí, že obrázok nepresiahne šírku kontajnera */
+        height: auto;
+    }
+}
+
+/* Responzívny dizajn pre ešte menšie obrazovky (napr. úzke mobily) */
+@media (max-width: 480px) {
+    .hero h2 {
+        font-size: 1.8em;
+    }
+    .hero p {
+        font-size: 0.9em;
+    }
+    .info-section h3 {
+        font-size: 1.6em;
+    }
+    .contact-section form {
+        width: 95%; /* Ešte širší formulár pre úzke mobily */
     }
 }
