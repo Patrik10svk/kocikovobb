@@ -26,7 +26,7 @@ header {
     display: flex; /* Použijeme flexbox pre lepšie zarovnanie loga a navigácie */
     align-items: center; /* Vertikálne zarovnanie obsahu hlavičky */
     justify-content: space-between; /* Rozloží obsah medzi logo a nav */
-    padding: 10px 0; /* Upravíme padding pre lepšie zarovnanie loga */
+    padding: 10px 0;
 }
 
 header .container { /* Upravíme kontajner v hlavičke, aby fungoval s flexboxom */
@@ -35,10 +35,11 @@ header .container { /* Upravíme kontajner v hlavičke, aby fungoval s flexboxom
     justify-content: space-between;
     width: 90%; /* Kontajner v hlavičke bude širší na mobiloch */
     margin: auto;
-    padding: 0; /* Odstránime padding, lebo je už na header */
+    padding: 0;
 }
 
 header h1 {
+    /* REMOVED: float: left; */ /* TOTO SME ODSTRÁNILI */
     margin: 0;
     padding: 0;
     display: none; /* Skryjeme text h1, keďže máme logo obrázok */
@@ -50,17 +51,18 @@ header h1 {
     align-items: center;
     justify-content: center;
     height: 100%;
-    margin-right: 20px; /* Vzdialenosť od navigácie */
+    margin-right: 20px;
 }
 
 .logo {
-    max-width: 150px; /* Max šírka loga */
+    max-width: 150px;
     height: auto;
     display: block;
 }
 
 header nav {
-    margin-top: 0;
+    /* REMOVED: float: right; */ /* TOTO SME ODSTRÁNILI */
+    margin-top: 0; /* Zmenené z 10px na 0 */
 }
 
 header ul {
@@ -71,6 +73,7 @@ header ul {
 }
 
 header li {
+    /* REMOVED: display: inline; */ /* TOTO SME ODSTRÁNILI - už to nepotrebujeme vďaka flexboxu na ul */
     padding: 0 15px;
 }
 
@@ -89,7 +92,6 @@ header a:hover {
 /* Hero sekcia */
 .hero {
     min-height: 400px;
-    /* Ponechaný obrázok s chlapcom na skateboarde, ktorý si chcel */
     background: url('images/2v244s.jpg') no-repeat center center/cover;
     color: #fff;
     text-align: center;
@@ -123,6 +125,13 @@ header a:hover {
 
 .btn:hover {
     background: #4cae4c;
+}
+
+/* Všeobecné nastavenie pre všetky obrázky, aby boli responzívne */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Zabezpečí, že img je blokový prvok pre lepšie zarovnanie a margin */
 }
 
 /* Info sekcie */
@@ -168,11 +177,9 @@ header a:hover {
 .contact-section {
     padding: 40px 0;
     text-align: center;
-    /* Pozadie pre kontaktnú sekciu s obrázkom 13htt2.jpg */
     background: url('images/13htt2.jpg') repeat center center;
-    background-size: 1550px auto; /* Uprav veľkosť podľa potreby */
-    color: #333; /* Text na čierno (alebo #666), aby bol čitateľný na svetlom pozadí */
-
+    background-size: 500px auto; /* Uprav veľkosť podľa potreby */
+    color: #333;
 }
 
 /* Form v kontaktnej sekcii */
@@ -180,8 +187,7 @@ header a:hover {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    /* Priehľadné pozadie formulára, aby presvital obrázok kontaktnej sekcie */
-    background: rgba(255, 255, 255, 0.7); /* Biely podklad so 70% nepriehľadnosťou */
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     color: #333;
@@ -189,7 +195,7 @@ header a:hover {
 
 .contact-section form input,
 .contact-section form textarea {
-    width: calc(100% - 20px); /* Pre mobil správne vypočíta šírku s paddingom */
+    width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
@@ -233,60 +239,60 @@ footer {
     header {
         flex-direction: column; /* Položky hlavičky pod sebou */
         padding: 10px 0;
+        align-items: flex-start; /* Zarovnanie loga a nav doľava, nie center */
     }
     header .container {
         flex-direction: column;
-        width: 95%; /* Zabezpečí širší kontajner aj v hlavičke */
+        width: 95%;
+        align-items: flex-start; /* Zarovnanie obsahu kontajnera doľava */
     }
     .logo-link {
-        margin-right: 0; /* Odstránime pravý margin */
-        margin-bottom: 10px; /* Pridáme spodný margin */
+        margin-right: 0;
+        margin-bottom: 10px;
     }
     header nav ul {
         flex-direction: column; /* Položky navigácie pod sebou */
         width: 100%; /* Navigácia cez celú šírku */
-        text-align: center; /* Vycentrovať text */
+        text-align: left; /* Zarovnanie textu navigácie doľava */
     }
     header li {
-        padding: 8px 0; /* Viac miesta medzi položkami */
+        padding: 8px 0;
+        width: 100%; /* Aby sa každá položka natiahla na celú šírku */
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* Jemná čiara medzi položkami */
+    }
+    header li:last-child {
+        border-bottom: none; /* Posledná položka bez čiary */
     }
 
     /* Hero sekcia */
     .hero h2 {
-        font-size: 2.2em; /* Zmenšíme veľkosť nadpisu */
+        font-size: 2.2em;
     }
     .hero p {
-        font-size: 1em; /* Zmenšíme veľkosť textu */
+        font-size: 1em;
     }
 
     /* Všeobecné sekcie */
     .info-section, .contact-section {
-        padding: 20px 0; /* Zmenšíme padding sekcií */
+        padding: 20px 0;
     }
 
     .info-section h3 {
-        font-size: 1.8em; /* Zmenšíme nadpisy sekcií */
+        font-size: 1.8em;
     }
     .info-section ul {
         margin: 15px auto;
-        padding-left: 15px; /* Upravíme padding */
+        padding-left: 15px;
     }
 
     /* Kontaktný formulár */
     .contact-section form {
-        width: 90%; /* Zabezpečíme šírku formulára na mobiloch */
+        width: 90%;
         padding: 15px;
     }
     .contact-section form input,
     .contact-section form textarea {
-        width: calc(100% - 20px); /* Zabezpečí, že inputy sú 100% široké mínus padding */
-    }
-
-    /* Ak máš iné obrázky, ktoré treba prispôsobiť, treba ich upraviť tu */
-    /* Napríklad, ak pic01.webp v sekcii Výkup je príliš veľký */
-    .quality-seal { /* Ak máš túto triedu pre pic01.webp */
-        max-width: 100%; /* Zabezpečí, že obrázok nepresiahne šírku kontajnera */
-        height: auto;
+        width: calc(100% - 20px);
     }
 }
 
@@ -302,6 +308,6 @@ footer {
         font-size: 1.6em;
     }
     .contact-section form {
-        width: 95%; /* Ešte širší formulár pre úzke mobily */
+        width: 95%;
     }
 }
