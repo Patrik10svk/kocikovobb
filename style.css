@@ -178,8 +178,8 @@ img {
     padding: 40px 0;
     text-align: center;
     background: url('images/13htt2.jpg') repeat center center;
-    background-size: 500px auto; /* Uprav veľkosť podľa potreby */
-    color: #333;
+    background-size: 1550px auto; /* Uprav veľkosť podľa potreby */
+    color: #333; /* Text na čierno (alebo #666), aby bol čitateľný na svetlom pozadí */
 }
 
 /* Form v kontaktnej sekcii */
